@@ -62,7 +62,6 @@ model Question {
   quiz      Quiz       @relation(fields: [quizId], references: [id], onDelete: Cascade)
   options   Option[]
   answers   Answer[]
-  required  Boolean    @default(false)
   order     Int
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
@@ -76,7 +75,7 @@ model Option {
   questionId  String
   isCorrectAnswer Boolean @default(false)
   question    Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
-  answers     AnswerOption[]
+  answers Answer[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -101,20 +100,10 @@ model Answer {
   questionId String
   question   Question       @relation(fields: [questionId], references: [id], onDelete: Cascade)
 
-  options    AnswerOption[]
+ optionId String
+option   Option @relation(fields: [optionId], references: [id], onDelete: Cascade)
+
 
   createdAt  DateTime @default(now())
 }
 
-model AnswerOption {
-  id        String  @id @default(cuid())
-  answerId  String
-  optionId  String
-
-  answer    Answer  @relation(fields: [answerId], references: [id], onDelete: Cascade)
-  option    Option  @relation(fields: [optionId], references: [id], onDelete: Cascade)
-
-  createdAt DateTime @default(now())
-
-  @@unique([answerId, optionId])
-}

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { signOut } from "@/auth";
+import Test from "@/components/test";
 const Dash = () => {
   return (
     <div>
@@ -11,6 +12,7 @@ const Dash = () => {
           await signOut();
         }}
       >SignOut </Button>
+      <Test />
     </div>
   );
 };
