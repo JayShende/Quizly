@@ -11,16 +11,8 @@ const addResponse = async (req: Request, res: Response) => {
       quizId,
       answers,
     };
-    const addedResponse = await responseService.addResponse(
-      data,
-      req.user?.userId!
-    );
-    return response(
-      res,
-      HttpStatus.OK,
-      "Response added successfully",
-      addedResponse
-    );
+    const result = await responseService.addResponse(data, req.user?.userId!);
+    return response(res, HttpStatus.OK, "Response added successfully", result);
   } catch (error) {
     if (error instanceof ApiError) {
       return response(res, error.statusCode, error.message, null);

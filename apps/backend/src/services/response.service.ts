@@ -1,6 +1,7 @@
 import { client } from "@repo/prisma/client";
 import httpStatus from "http-status";
 import ApiError from "../utils/api-error";
+import quizService from "./quiz.service";
 
 interface answerProps {
   questionId: string;
@@ -24,6 +25,21 @@ const addResponse = async (data: AddResponseProps, userId: string) => {
   if (!quiz) {
     throw new ApiError(httpStatus.NOT_FOUND, "Quiz not found");
   }
+
+  // check if the user has already responded to the quiz
+  const userResponse = await client.response.findFirst({
+    where: {
+      quizId: data.quizId,
+      userId: userId,
+    },
+  });
+  if (userResponse) {
+    throw new ApiError(
+      httpStatus.BAD_REQUEST,
+      "User has already responded to the quiz"
+    );
+  }
+
   // process the adding the response
   const quizResponse = await client.response.create({
     data: {
@@ -37,7 +53,21 @@ const addResponse = async (data: AddResponseProps, userId: string) => {
       },
     },
   });
-  return quizResponse;
+
+  // post addition of Response Calculate the score
+  const score = await quizService.calculateScore(data.quizId, userId);
+  console.log(score);
+  // update the response with the score
+  await client.response.update({
+    where: {
+      id: quizResponse.id,
+    },
+    data: { score: score },
+  });
+  return {
+    response: quizResponse,
+    score: score,
+  };
 };
 
 export default {

@@ -85,6 +85,8 @@ model Response {
   quizId    String
   quiz      Quiz      @relation(fields: [quizId], references: [id], onDelete: Cascade)
   userId    String
+
+  score     Json?
   user      User?     @relation(fields: [userId], references: [id])
   answers   Answer[]  
   createdAt DateTime  @default(now())
