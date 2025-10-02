@@ -92,9 +92,33 @@ const getLeaderboard = async (req: Request, res: Response) => {
   }
 };
 
+// get All Quiz MetaData
+const getAllQuizMetaData = async (req: Request, res: Response) => {
+  try {
+    const quizzes = await quizService.getAllQuizMetaData();
+    return response(
+      res,
+      HttpStatus.OK,
+      "Quiz MetaData fetched successfully",
+      quizzes
+    );
+  } catch (error) {
+    if (error instanceof ApiError) {
+      return response(res, error.statusCode, error.message, null);
+    }
+    return response(
+      res,
+      HttpStatus.INTERNAL_SERVER_ERROR,
+      "Internal Server Error",
+      null
+    );
+  }
+};
+
 export default {
   createQuiz,
   getQuiz,
   getScore,
   getLeaderboard,
+  getAllQuizMetaData,
 };

@@ -23,4 +23,10 @@ router.get(
   quizController.getLeaderboard
 );
 
+router.get(
+  "/get-all-quiz-meta-data",
+  authMiddleware,
+  quizController.getAllQuizMetaData
+);
+
 export default router;

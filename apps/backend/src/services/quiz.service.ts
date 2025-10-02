@@ -225,10 +225,26 @@ const getLeaderboard = async (quizId: string) => {
   return rankedLeaderboard;
 };
 
+//  Get All Quiz MetaData
+const getAllQuizMetaData = async () => {
+  const quizzes = await client.quiz.findMany({
+    select: {
+      id: true,
+      title: true,
+      description: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return quizzes;
+};
+
 export default {
   createQuiz,
   getQuiz,
   calculateScore,
   getScore,
   getLeaderboard,
+  getAllQuizMetaData,
 };
