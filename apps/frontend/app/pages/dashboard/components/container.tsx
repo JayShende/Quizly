@@ -1,0 +1,77 @@
+import { cn } from "@/lib/utils";
+import { ReactNode } from "react";
+
+interface ContainerProps {
+  children: ReactNode;
+  className?: string;
+}
+
+const Container = ({ children, className }: ContainerProps) => {
+  return (
+    <div className="min-h-screen w-full relative">
+      {/* Dashed Center Fade Grid */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+          linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+          linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+        `,
+          backgroundSize: "20px 20px",
+          backgroundPosition: "0 0, 0 0",
+          maskImage: `
+         repeating-linear-gradient(
+                to right,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+              repeating-linear-gradient(
+                to bottom,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+            radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
+        `,
+          WebkitMaskImage: `
+   repeating-linear-gradient(
+                to right,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+              repeating-linear-gradient(
+                to bottom,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+            radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
+        `,
+          maskComposite: "intersect",
+          WebkitMaskComposite: "source-in",
+        }}
+      />
+      <div className={cn("max-w-5xl mx-auto w-full px-4 relative", className)}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
+// const Container = ({ children, className }: ContainerProps) => {
+//     return (
+
+//         <div className={cn("max-w-5xl mx-auto w-full px-4", className)}>
+//           {children}
+//         </div>
+
+//     );
+//   };
+
+export default Container;
