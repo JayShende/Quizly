@@ -115,10 +115,36 @@ const getAllQuizMetaData = async (req: Request, res: Response) => {
   }
 };
 
+// check if the quiz is already submitted
+const checkIfQuizIsSubmitted = async (req: Request, res: Response) => {
+  try {
+    const { quizId } = req.params;
+    if (!quizId) {
+      throw new ApiError(HttpStatus.BAD_REQUEST, "Quiz ID is required");
+    }
+    const isSubmitted = await quizService.checkIfQuizIsSubmitted(
+      quizId,
+      req.user?.userId!
+    );
+    return response(res, HttpStatus.OK, "Quiz is submitted", isSubmitted);
+  } catch (error) {
+    if (error instanceof ApiError) {
+      return response(res, error.statusCode, error.message, null);
+    }
+    return response(
+      res,
+      HttpStatus.INTERNAL_SERVER_ERROR,
+      "Internal Server Error",
+      null
+    );
+  }
+};
+
 export default {
   createQuiz,
   getQuiz,
   getScore,
   getLeaderboard,
   getAllQuizMetaData,
+  checkIfQuizIsSubmitted,
 };

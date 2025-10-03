@@ -78,7 +78,7 @@ const CardsQuiz = () => {
                 className="w-full flex items-center gap-x-2 rounded-lg border border-gray-300 px-4 py-2 text-xs text-gray-600 transition duration-300 hover:bg-indigo-50 hover:text-indigo-600 cursor-pointer"
                 variant="outline"
                 onClick={() => {
-                  router.push(`/quiz/${quiz.id}`);
+                  router.push(`/quiz/${quiz.id}/attempt`);
                 }}
               >
                 Attempt Now

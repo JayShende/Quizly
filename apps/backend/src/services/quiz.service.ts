@@ -207,6 +207,7 @@ const getLeaderboard = async (quizId: string) => {
   });
 
   // Assign ranks (same rank for same percentage)
+  // Example: [100%, 100%, 90%, 90%, 80%] -> ranks [1, 1, 3, 3, 5]
   let currentRank = 1;
   let previousPercentage = -1;
 
@@ -240,6 +241,28 @@ const getAllQuizMetaData = async () => {
   return quizzes;
 };
 
+// check if the quiz is already submitted
+const checkIfQuizIsSubmitted = async (quizId: string, userId: string) => {
+  const quiz = await client.quiz.findUnique({
+    where: {
+      id: quizId,
+    },
+  });
+  if (!quiz) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Quiz not found");
+  }
+  const response = await client.response.findFirst({
+    where: {
+      quizId: quizId,
+      userId: userId,
+    },
+  });
+  if (response) {
+    return true;
+  }
+  return false;
+};
+
 export default {
   createQuiz,
   getQuiz,
@@ -247,4 +270,5 @@ export default {
   getScore,
   getLeaderboard,
   getAllQuizMetaData,
+  checkIfQuizIsSubmitted,
 };

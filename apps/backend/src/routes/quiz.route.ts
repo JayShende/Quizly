@@ -29,4 +29,10 @@ router.get(
   quizController.getAllQuizMetaData
 );
 
+router.get(
+  "/check-if-quiz-is-submitted/:quizId",
+  authMiddleware,
+  quizController.checkIfQuizIsSubmitted
+);
+
 export default router;

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { TanstackProvider } from "@/components/tasnstack-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,7 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <TanstackProvider>{children}</TanstackProvider>
+        <TanstackProvider>{children}
+          <Toaster />
+        </TanstackProvider>
       </body>
     </html>
   );
