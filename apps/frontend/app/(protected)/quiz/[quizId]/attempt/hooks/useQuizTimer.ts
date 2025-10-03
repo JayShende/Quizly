@@ -4,6 +4,7 @@ interface UseQuizTimerProps {
   isQuizStarted: boolean;
   isQuizCompleted: boolean;
   showPreQuizForm: boolean;
+  duration: number;
   onTimeUp: () => void;
 }
 
@@ -11,13 +12,19 @@ export const useQuizTimer = ({
   isQuizStarted,
   isQuizCompleted,
   showPreQuizForm,
+  duration,
   onTimeUp,
 }: UseQuizTimerProps) => {
-  const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
+  const [timeLeft, setTimeLeft] = useState(duration); // Duration in seconds
 
   const resetTimer = useCallback(() => {
-    setTimeLeft(300);
-  }, []);
+    setTimeLeft(duration);
+  }, [duration]);
+
+  // Update timeLeft when duration changes
+  useEffect(() => {
+    setTimeLeft(duration);
+  }, [duration]);
 
   useEffect(() => {
     if (timeLeft > 0 && !isQuizCompleted && !showPreQuizForm) {
@@ -32,3 +39,5 @@ export const useQuizTimer = ({
 
   return { timeLeft, resetTimer };
 };
+
+// this hook is used to manage the timer for the quiz

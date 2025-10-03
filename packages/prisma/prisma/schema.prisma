@@ -49,6 +49,7 @@ model Quiz {
   title       String
   description String?
   lastQuestionOrder Int        @default(0)
+  duration Int        @default(180)
   questions   Question[]
   responses   Response[]
   createdAt   DateTime   @default(now())

@@ -18,11 +18,13 @@ import { interFont } from "@/app/fonts/fonts";
 
 interface PreQuizFormProps {
   totalQuestions: number;
+  duration: number;
   onStartQuiz: () => void;
 }
 
 const PreQuizForm: React.FC<PreQuizFormProps> = ({
   totalQuestions,
+  duration,
   onStartQuiz,
 }) => {
   return (
@@ -73,7 +75,7 @@ const PreQuizForm: React.FC<PreQuizFormProps> = ({
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
                 <span className="text-gray-700 text-sm">
-                  <strong>Time Limit:</strong> 5 minutes
+                  <strong>Time Limit:</strong> {duration/60} minutes
                 </span>
               </div>
               <div className="flex items-center gap-3">

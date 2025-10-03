@@ -13,6 +13,7 @@ export interface Question {
 
 export interface QuizData {
   questions: Question[];
+  duration: number;
 }
 
 export interface Answer {

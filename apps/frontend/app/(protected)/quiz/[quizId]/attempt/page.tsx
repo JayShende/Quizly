@@ -87,7 +87,6 @@ const QuizPage = () => {
         quizId,
         answers,
       });
-      console.log(mutationResult);
       const score: { correctAnswers: number; totalQuestions: number } =
         mutationResult.data.score;
       setQuizScore(score);
@@ -109,10 +108,11 @@ const QuizPage = () => {
     isQuizStarted,
     isQuizCompleted,
     showPreQuizForm,
+    duration: getQuizQuery.data?.data.duration || 180,
     onTimeUp: handleSubmitQuiz,
   });
 
-  // Prevention hooks
+  // Prevention hooks 
   useQuizPrevention({ isQuizStarted, isQuizCompleted });
 
   // Start quiz function
@@ -182,6 +182,7 @@ const QuizPage = () => {
     return (
       <PreQuizForm
         totalQuestions={questions.length}
+        duration={getQuizQuery.data?.data.duration || 180}
         onStartQuiz={handleStartQuiz}
       />
     );

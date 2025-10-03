@@ -21,6 +21,7 @@ interface quizMetaDataProps {
   id: string;
   title: string;
   description: string;
+  duration: number;
 }
 
 const CardsQuiz = () => {
@@ -69,7 +70,7 @@ const CardsQuiz = () => {
                     openSansFont.className
                   )}
                 >
-                  Duration - 10 Minutes
+                  Duration - {quiz.duration/60} Minutes
                 </span>
               </div>
             </CardContent>

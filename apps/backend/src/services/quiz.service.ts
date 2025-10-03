@@ -31,7 +31,11 @@ const getQuiz = async (id: string) => {
     where: {
       id: id,
     },
-    include: {
+    select: {
+      id: true,
+      title: true,
+      description: true,
+      duration: true,
       questions: {
         select: {
           id: true,
@@ -233,6 +237,7 @@ const getAllQuizMetaData = async () => {
       id: true,
       title: true,
       description: true,
+      duration: true,
     },
     orderBy: {
       createdAt: "desc",
