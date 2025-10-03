@@ -6,6 +6,7 @@
     "start": "turbo run start --filter=web --filter=backend ",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "test":"cd apps/backend && pnpm test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
   },
