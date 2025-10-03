@@ -36,7 +36,7 @@ const QuizCompleted: React.FC<QuizCompletedProps> = ({
     : 0;
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <Card className="w-full max-w-2xl h-[90vh] flex flex-col">
+      <Card className="w-full max-w-2xl h-[90vh] flex flex-col py-0">
         <div className="w-full h-3 rounded-t-xl bg-gradient-to-r from-green-500 to-emerald-600" />
         <CardHeader className="text-center pb-4 flex-shrink-0">
           <div className="flex justify-center mb-3">
@@ -142,7 +142,7 @@ const QuizCompleted: React.FC<QuizCompletedProps> = ({
                   </div>
                 )}
 
-                <div className="flex gap-2 justify-center">
+                <div className="flex sm:flex-row flex-col gap-2 justify-center">
                   <Button
                     onClick={() => router.push(`/quiz/${quizId}/leaderboard`)}
                     className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2 text-sm"
