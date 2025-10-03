@@ -26,11 +26,7 @@ export const useFullscreen = ({
   };
 
   useEffect(() => {
-    if (
-      isQuizCompleted &&
-      document.fullscreenElement &&
-      document.exitFullscreen
-    ) {
+    if (isQuizCompleted && document.fullscreenElement) {
       exitFullscreen();
     }
   }, [isQuizCompleted]);
