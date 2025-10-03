@@ -1,0 +1,51 @@
+name: Deploy the Quizly to the EC2 Via CI-Cd and Github Actions
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout The Code
+        uses: actions/checkout@v2
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SECRET_KEY }}
+          port: 22
+          script: |
+            echo "📦 Starting SSH Deployment..."
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+            nvm use 22 || nvm install 22
+
+            echo "✅ Node version: $(node -v)"
+            echo "✅ NPM version: $(npm -v)"
+            echo "✅ PNPM version: $(pnpm -v)"  # Verify pnpm is available
+            set -e  # stop on error
+            set -x  # print commands before running them
+
+            # Navigate to your app directory
+            cd ${{ secrets.APP_DIR }}
+
+            # Pull latest changes
+            git pull
+            
+            echo "📥 Installing dependencies..."
+            pnpm install
+
+            echo "🔧 Building the project..."
+            pnpm run build
+
+            echo "🚀 Restarting app using PM2..."
+            pm2 restart quizly || pm2 start "pnpm start" --name quizly
+
+            echo "🎉 Deployment Successful!"
