@@ -322,7 +322,7 @@ export default function Home() {
             <div className="border-t border-gray-800 mt-8 pt-8 text-center">
               <p className={cn("text-gray-400", openSansFont.className)}>
                 © 2024 Quizly. All rights reserved. Built with ❤️ By
-                <Link href="https://unseenjs.xyz">Jay Shende</Link>.
+                <Link href="https://unseenjs.xyz" > Jay Shende</Link>.
               </p>
             </div>
           </div>
