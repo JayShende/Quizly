@@ -8,15 +8,7 @@ import {
 import { interFont, openSansFont } from "@/app/fonts/fonts";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import {
-  LuBrain,
-  LuClock,
-  LuChartBar,
-  LuUsers,
-  LuShield,
-  LuZap,
-  LuArrowRight,
-} from "react-icons/lu";
+import { LuBrain, LuClock, LuUsers, LuZap, LuArrowRight } from "react-icons/lu";
 
 export default function Home() {
   return (
@@ -329,11 +321,8 @@ export default function Home() {
             </div>
             <div className="border-t border-gray-800 mt-8 pt-8 text-center">
               <p className={cn("text-gray-400", openSansFont.className)}>
-                © 2024 Quizly. All rights reserved. Built with ❤️ By 
-                <Link href="https://unseenjs.xyz">
-                Jay Shende
-                </Link>
-                .
+                © 2024 Quizly. All rights reserved. Built with ❤️ By
+                <Link href="https://unseenjs.xyz">Jay Shende</Link>.
               </p>
             </div>
           </div>
