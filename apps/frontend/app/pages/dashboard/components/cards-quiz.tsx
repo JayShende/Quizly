@@ -38,7 +38,7 @@ const CardsQuiz = () => {
     return <div>No quiz meta data found</div>;
   }
   return (
-    <div className="px-2 py-10 grid grid-cols-3 gap-4">
+    <div className="sm:px-2 px-5 py-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
       {quizMetaData.map((quiz: quizMetaDataProps) => {
         return (
           <Card className="pt-0" key={quiz.id}>

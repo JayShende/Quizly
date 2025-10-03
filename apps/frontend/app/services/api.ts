@@ -58,3 +58,13 @@ export const getQuizScore = async (quizId: string) => {
   });
   return response.data;
 };
+
+
+// fetch response by quizid and userid
+export const getResponseByQuizIdAndUserId = async (quizId: string) => {
+  const response = await axios({
+    method: "get",
+    url: `/${baseUrl}/response/${quizId}`,
+  });
+  return response.data;
+};

@@ -13,4 +13,11 @@ router.post(
   questionController.addQuestion
 );
 
+router.post(
+  "/add-bulk",
+  authMiddleware,
+  validate(questionValidator.addBulkQuestions),
+  questionController.addBulkQuestions
+);
+
 export default router;

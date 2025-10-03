@@ -34,7 +34,7 @@ const Header = async () => {
     return;
   }
   return (
-    <div className="px-2 py-4 flex items-center justify-between ">
+    <div className="px-2 py-4 flex items-center justify-between sticky top-0 bg-white z-10">
       <div className={cn("text-xl font-bold", interFont.className)}>Quizly</div>
       <div>
         <UserAvatar

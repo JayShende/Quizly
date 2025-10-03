@@ -57,7 +57,7 @@ const Container = ({ children, className }: ContainerProps) => {
       WebkitMaskComposite: "source-in",
     }}
   />
-      <div className={cn("max-w-5xl mx-auto w-full px-4 relative", className)}>
+      <div className={cn("sm:max-w-5xl max-w-full mx-auto w-full px-4 relative", className)}>
         {children}
       </div>
     </div>

@@ -7,6 +7,7 @@ import {
   getLeaderboard,
   checkIfQuizIsSubmitted,
   getQuizScore,
+  getResponseByQuizIdAndUserId,
 } from "./api";
 
 export function useGetQuizMetaData() {
@@ -61,5 +62,15 @@ export function useGetQuizScore(
     queryFn: () => getQuizScore(quizId),
     refetchOnWindowFocus: false,
     enabled: options?.enabled !== false && !!quizId,
+  });
+}
+
+
+// get response by quizid and userid
+export function useGetResponseByQuizIdAndUserId(quizId: string) {
+  return useQuery({
+    queryKey: ["response-by-quizid-and-userid", quizId],
+    queryFn: () => getResponseByQuizIdAndUserId(quizId),
+    refetchOnWindowFocus: false,
   });
 }

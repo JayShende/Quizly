@@ -4,6 +4,7 @@ import ApiError from "../utils/api-error";
 
 interface option {
   text: string;
+  isCorrectAnswer?: boolean;
 }
 
 interface AddQuestionProps {
@@ -12,6 +13,14 @@ interface AddQuestionProps {
   required?: boolean;
   order: number;
   options: option[];
+}
+
+interface AddBulkQuestionsProps {
+  quizId: string;
+  questions: Array<{
+    text: string;
+    options: option[];
+  }>;
 }
 
 const addQuestion = async (data: AddQuestionProps) => {
@@ -51,6 +60,64 @@ const addQuestion = async (data: AddQuestionProps) => {
   return question;
 };
 
+const addBulkQuestions = async (data: AddBulkQuestionsProps) => {
+  // check if the quiz exists
+  const quiz = await client.quiz.findUnique({
+    where: {
+      id: data.quizId,
+    },
+  });
+  if (!quiz) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Quiz not found");
+  }
+
+  // Start a transaction to ensure all questions are created or none
+  const result = await client.$transaction(async (prisma) => {
+    // Update the quiz's lastQuestionOrder
+    const updatedQuiz = await prisma.quiz.update({
+      where: {
+        id: data.quizId,
+      },
+      data: {
+        lastQuestionOrder: quiz.lastQuestionOrder + data.questions.length,
+      },
+      select: {
+        lastQuestionOrder: true,
+      },
+    });
+
+    // Create all questions with their options
+    const createdQuestions = [];
+    let currentOrder = quiz.lastQuestionOrder + 1;
+
+    for (const questionData of data.questions) {
+      const question = await prisma.question.create({
+        data: {
+          text: questionData.text,
+          quizId: data.quizId,
+          order: currentOrder,
+          options: {
+            create: questionData.options,
+          },
+        },
+        include: {
+          options: true,
+        },
+      });
+      createdQuestions.push(question);
+      currentOrder++;
+    }
+
+    return {
+      questions: createdQuestions,
+      updatedQuiz,
+    };
+  });
+
+  return result;
+};
+
 export default {
   addQuestion,
+  addBulkQuestions,
 };

@@ -157,6 +157,13 @@ const QuizCompleted: React.FC<QuizCompletedProps> = ({
                   >
                     Back to Dashboard
                   </Button>
+                  <Button
+                    onClick={() => router.push(`/quiz/${quizId}/response`)}
+                    variant="outline"
+                    className="border-green-500 text-green-600 hover:bg-green-50 font-semibold px-4 py-2 rounded-lg text-sm"
+                  >
+                    View Your Response
+                  </Button>
                 </div>
               </div>
             )}
