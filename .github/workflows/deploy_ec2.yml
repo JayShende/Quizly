@@ -1,4 +1,4 @@
-name: Deploy the Quizly to the EC2 Via CI-Cd and Github Actions
+name: Deploy the Quizly to the EC2 Via CI-Cd and Github Actions 
 
 on:
   push:
