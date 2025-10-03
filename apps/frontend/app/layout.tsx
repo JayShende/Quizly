@@ -26,9 +26,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <TanstackProvider>{children}
-          <Toaster />
-        </TanstackProvider>
+        {children}
+        <Toaster />
       </body>
     </html>
   );
