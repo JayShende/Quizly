@@ -324,7 +324,7 @@ export default function Home() {
                 © 2024 Quizly. All rights reserved. Built with ❤️ By
                 <Link href="https://unseenjs.xyz" > Jay Shende</Link>.
               </p>
-            </div>
+            </div> 
           </div>
         </footer>
       </div>
