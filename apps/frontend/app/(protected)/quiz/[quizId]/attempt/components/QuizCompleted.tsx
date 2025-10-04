@@ -36,7 +36,7 @@ const QuizCompleted: React.FC<QuizCompletedProps> = ({
     : 0;
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <Card className="w-full max-w-2xl h-[90vh] flex flex-col py-0">
+      <Card className="w-full max-w-2xl min-h-[90vh] flex flex-col py-0 overflow-y-auto">
         <div className="w-full h-3 rounded-t-xl bg-gradient-to-r from-green-500 to-emerald-600" />
         <CardHeader className="text-center pb-4 flex-shrink-0">
           <div className="flex justify-center mb-3">
@@ -61,7 +61,7 @@ const QuizCompleted: React.FC<QuizCompletedProps> = ({
               : "Congratulations on finishing the quiz"}
           </CardDescription>
         </CardHeader>
-        <CardContent className="flex-1 flex items-center justify-center overflow-hidden">
+        <CardContent className="flex-1 flex items-center justify-center overflow-y-auto">
           <div className="text-center w-full max-h-full flex flex-col justify-center">
             {isSubmitting ? (
               <div className="space-y-3">
