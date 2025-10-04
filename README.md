@@ -1,135 +1,506 @@
-# Turborepo starter
+# 🧠 Quizly - Master Your Knowledge with**Smart Quizzes**
 
-This Turborepo starter is maintained by the Turborepo core team.
+## 🎯 **VERTO ASSOCIATE SOFTWARE ENGINEER CHALLENGE**
 
-## Using this example
+**Full-Stack Online Quiz Application** - A comprehensive quiz platform built as part of the Verto ASE application process, demonstrating modern web development skills, production deployment, and enterprise-level architecture.
 
-Run the following command:
+---
 
-```sh
-npx create-turbo@latest
-```
+A comprehensive full-stack quiz application built with modern web technologies, featuring real-time quiz taking, authentication, leaderboards, and detailed analytics.
 
-## What's inside?
+## 🌐 Live Application
 
-This Turborepo includes the following packages/apps:
+**Production URL:** [http://quizly.unseenjs.xyz/](http://quizly.unseenjs.xyz/)
 
-### Apps and Packages
+The application is deployed on AWS EC2 (t2.medium instance) with:
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- **Nginx** reverse proxy
+- **PM2** process manager
+- **NeonDB** PostgreSQL database
+- **GitHub Actions** CI/CD pipeline
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## 🚀 Features
 
-### Utilities
+### Core Features ✅
 
-This Turborepo has some additional tools already setup for you:
+- **User Authentication** - GitHub & Google OAuth integration
+- **Quiz Management** - Create, manage, and take quizzes
+- **Real-time Quiz Taking** - Interactive quiz interface with navigation
+- **Timer Functionality** - Configurable quiz timers with auto-submission
+- **Score Calculation** - Automatic scoring with detailed results
+- **Leaderboard** - Real-time ranking system
+- **Response Analytics** - Detailed breakdown of user answers
+- **Platform with Multiple Quiz** - The App has Multiple Quiz
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+### Bonus Features ✨
 
-### Build
+- **Fullscreen Mode** - Distraction-free quiz experience
+- **Page Refresh Prevention** - Prevents accidental quiz interruption
+- **Responsive Design** - Mobile-first, modern UI/UX
+- **Real-time Progress Tracking** - Visual progress indicators
+- **Detailed Results Page** - Shows correct/incorrect answers
+- **Quiz Metadata Dashboard** - Overview of all available quizzes
+- **Comprehensive Testing** - Backend test suite with Jest
 
-To build all apps and packages, run the following command:
+## 🛠️ Tech Stack
 
-```
-cd my-turborepo
+### Frontend
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
+- **Next.js 15** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first CSS framework
+- **NextAuth.js** - Authentication library (powered by BoltGate)
+- **TanStack Query** - Data fetching  (React Query)
+- **shadcn/ui** - Accessible component primitives built on Radix UI
+- **Lucide React** - Beautiful icons
+- **Sonner** - Toast notifications
+- **API Proxy** - Secure backend communication
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
-```
+### Backend
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+- **Express.js** - Node.js web framework
+- **TypeScript** - Type-safe development
+- **JWT** - JSON Web Token authentication
+- **Zod** - Schema validation
+- **CORS** - Cross-origin resource sharing
+- **Jest** - Testing framework
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+### Database & ORM
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
+- **PostgreSQL** - Primary database
+- **Prisma** - Database ORM and migrations
+- **NeonDB** - Free Postgres DB Provider
 
-### Develop
+### DevOps & Deployment
 
-To develop all apps and packages, run the following command:
+- **Turbo** - Monorepo build system
+- **pnpm** - Package manager
+- **GitHub Actions** - CI/CD pipeline
+- **AWS EC2** - Cloud hosting
+- **Nginx** - Reverse proxy
+- **PM2** - Process manager
 
-```
-cd my-turborepo
+### Development Tools
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **TypeScript** - Static type checking
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
-```
+### Custom Libraries
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+- **BoltGate** - Custom NextAuth.js wrapper ([npm package](https://www.npmjs.com/package/boltgate)) created and maintained by Me, providing enhanced security features and simplified authentication setup. BoltGate is a tool built to install NextAuth easily.
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+## 📁 Project Structure
 
 ```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
+quizly/
+├── apps/
+│   ├── frontend/                 # Next.js frontend application
+│   │   ├── app/                  # App Router pages and components
+│   │   │   ├── (protected)/     # Protected routes
+│   │   │   │   ├── dashboard/    # User dashboard
+│   │   │   │   └── quiz/        # Quiz pages
+│   │   │   ├── api/             # API routes
+│   │   │   ├── auth/            # Authentication pages
+│   │   │   └── pages/           # Additional pages
+│   │   ├── components/          # Reusable UI components
+│   │   ├── lib/                 # Utility functions
+│   │   └── services/            # API services and queries
+│   └── backend/                 # Express.js backend API
+│       ├── src/
+│       │   ├── controller/       # Route controllers
+│       │   ├── services/        # Business logic
+│       │   ├── routes/         # API routes
+│       │   ├── middlewares/    # Custom middlewares
+│       │   ├── validators/     # Request validation
+│       │   └── utils/         # Utility functions
+│       └── tests/             # Test suites
+├── packages/
+│   ├── prisma/                 # Database schema and client
+│   ├── ui/                    # Shared UI components
+│   ├── eslint-config/         # Shared ESLint configuration
+│   └── typescript-config/     # Shared TypeScript configuration
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## 🚀 Quick Start
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### Prerequisites
+
+- Node.js 18+
+- pnpm (recommended) or npm
+- PostgreSQL database
+- GitHub OAuth app (for authentication)
+- Google OAuth app (for authentication)
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd quizly
+   ```
+2. **Install dependencies**
+
+   ```bash
+   pnpm install
+   ```
+3. **Set up environment variables**
+
+   ```bash
+   Copy the Below Variables add Appropriate Values or Use the One made in Each Dir
+   ```
+
+   Fill in your environment variables in each `.env` file:
+
+   **Frontend `.env` file (`apps/frontend/.env`):**
+
+   ```env
+   # AUTH_URL=http://localhost:3000
+   AUTH_SECRET="your-nextauth-secret-key-here"
+
+   # OAuth Providers
+   GITHUB_CLIENT_ID=your-github-client-id
+   GITHUB_CLIENT_SECRET=your-github-client-secret
+   GOOGLE_CLIENT_ID=your-google-client-id
+   GOOGLE_CLIENT_SECRET=your-google-client-secret
+
+   EXPRESS_URL="http://localhost:3001"
+
+   # JWT Secret for internal communication
+   INTERNAL_JWT_SECRET="Your-jwt-here"
+
+   ```
+
+   **Backend `.env` file (`apps/backend/.env`):**
+
+   ```env
+   # Server Configuration
+   PORT=3001
+
+   # JWT Configuration
+   JWT_SECRET="your-jwt-secret-key-here"
+
+   ```
+
+   **Prisma `.env` file (`packages/prisma/.env`):**
+
+   ```env
+   # Database Configuration
+   DATABASE_URL="postgresql://username:password@localhost:5432/quizly_db"
+   ```
+4. **Set up the database**
+
+   ```bash
+   cd packages/prisma
+   pnpm prisma migrate dev
+   pnpm dlx prisma generate
+   ```
+5. **Start the development servers**
+
+   ```bash
+   # From root directory
+   pnpm dev
+   ```
+
+   This will start:
+
+   - Frontend: http://localhost:3000
+   - Backend: http://localhost:3001
+
+## 🧪 Running Tests
+
+### Backend Tests
+
+```bash
+# Run all tests
+pnpm test
+```
+
+### Test Coverage
+
+The backend includes comprehensive test coverage with **11 test cases** covering:
+
+#### Basic Scoring (4 tests):
+
+- ✅ Perfect score for all correct answers
+- ✅ Partial score for mixed answers
+- ✅ Zero score for all wrong answers
+- ✅ Zero score for empty answers
+
+#### Edge Cases (3 tests):
+
+- ✅ Quiz with no questions
+- ✅ User answering more questions than exist
+- ✅ User answering fewer questions than exist
+
+#### Error Handling (2 tests):
+
+- ✅ Quiz not found error
+- ✅ User response not found error
+
+#### Complex Scenarios (2 tests):
+
+- ✅ Multiple correct options for same question
+- ✅ Duplicate answers for same question
+
+**Total Test Coverage:** 11 comprehensive test cases ensuring robust quiz scoring logic and error handling.
+
+## 📚 API Documentation
+
+### Authentication Endpoints
+
+All protected endpoints require JWT authentication via the `Authorization` header.
+
+### Quiz Endpoints
+
+#### `POST /v1/quiz/create`
+
+Create a new quiz
+
+```json
+{
+  "title": "General Knowledge",
+  "description": "Quiz on General Knowledge",
+  "duration": 600
+}
+```
+
+#### `GET /v1/quiz/get/:id`
+
+Get quiz details (without correct answers)
+
+#### `GET /v1/quiz/get-score/:quizId`
+
+Get user's score for a specific quiz
+
+#### `GET /v1/quiz/leaderboard/:quizId`
+
+Get leaderboard for a specific quiz
+
+#### `GET /v1/quiz/get-all-quiz-meta-data`
+
+Get metadata for all quizzes
+
+#### `GET /v1/quiz/check-if-quiz-is-submitted/:quizId`
+
+Check if user has already submitted a quiz
+
+### Question Endpoints
+
+#### `POST /v1/question/add`
+
+Add a single question to a quiz
+
+```json
+{
+  "text": "What is the output of `2 + '2'` in JavaScript?",
+  "quizId": "quiz_id",
+  "options": [
+    { "text": "4" },
+    { "text": "'22'", "isCorrectAnswer": true },
+    { "text": "NaN" },
+    { "text": "undefined" }
+  ]
+}
+```
+
+#### `POST /v1/question/add-bulk`
+
+Add multiple questions to a quiz
+
+```json
+{
+  "quizId": "quiz_id",
+  "questions": [
+    {
+      "text": "What is the national animal of India?",
+      "options": [
+        { "text": "Lion" },
+        { "text": "Tiger", "isCorrectAnswer": true },
+        { "text": "Elephant" },
+        { "text": "Peacock" }
+      ]
+    },
+    {
+      "text": "Which planet is known as the Red Planet?",
+      "options": [
+        { "text": "Mars", "isCorrectAnswer": true },
+        { "text": "Jupiter" },
+        { "text": "Saturn" },
+        { "text": "Venus" }
+      ]
+    }
+  ]
+}
+```
+
+### Response Endpoints
+
+#### `POST /v1/response/add`
+
+Submit quiz responses
+
+```json
+{
+  "quizId": "quiz-id",
+  "answers": [
+    {
+      "questionId": "question-id",
+      "optionId": "option-id"
+    }
+  ]
+}
+```
+
+#### `GET /v1/response/:quizId`
+
+Get user's detailed response for a quiz
+
+## 🎯 Key Features Explained
+
+### Quiz Timer System
+
+- Configurable duration per quiz
+- Real-time countdown display
+- Auto-submission when time expires
+- Visual timer warnings
+
+### Authentication Flow
+
+- OAuth integration with GitHub and Google
+- JWT-based session management
+- Protected routes with middleware
+- User profile management
+- **BoltGate Integration** - Custom NextAuth.js wrapper for enhanced security
+
+### Quiz Taking Experience
+
+- Fullscreen mode for distraction-free experience
+- Page refresh prevention during quiz
+- Real-time answer tracking
+- Progress indicators
+- Navigation between questions
+
+### Scoring System
+
+- Automatic score calculation
+- Detailed answer analysis
+- Leaderboard generation
+
+### Security Architecture
+
+- **API Proxy Layer** - Next.js API routes act as a secure proxy between frontend and backend
+- **CORS Protection** - Configured CORS policies prevent unauthorized access
+- **JWT Token Management** - Secure token handling with automatic refresh
+- **Environment Isolation** - Sensitive data protected through environment variables
+- **BoltGate Security** - Custom authentication wrapper providing additional security layers
+
+## 🚀 Deployment
+
+### Production Setup
+
+The application is deployed using:
+
+1. **AWS EC2** - t2.medium instance
+2. **Nginx** - Reverse proxy configuration with SSL certificates
+3. **Certbot** - SSL certificate management for HTTPS
+4. **PM2** - Process management
+5. **NeonDB** - Cloud PostgreSQL database
+6. **GitHub Actions** - Automated deployment
+
+### CI/CD Pipeline
+
+- Automatic deployment on push to production branch
+- Uses Github Action For CICD Deployment
+
+## 🔧 Development
+
+### Available Scripts
+
+```bash
+# Development
+pnpm dev              # Start all services in development mode
+pnpm build            # Build all packages
+pnpm start            # Start production servers
+
+# Testing
+pnpm test             # Run backend tests
 
 ```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+### Database Management
+
+```bash
+# Generate Prisma client
+pnpm dlx prisma generate
+
+# Create migration
+pnpm prisma migrate dev
+
+# Reset database
+pnpm prisma migrate reset
 ```
 
-## Useful Links
+## 🏗️ Architecture Decisions
 
-Learn more about the power of Turborepo:
+### Monorepo Structure
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+- **Turbo** for efficient builds and caching
+- **Shared packages** for common configurations
+- **Workspace dependencies** for internal packages (workspace:\*)
+
+### Database Design
+
+- **Normalized schema** with proper relationships
+- **Cascade deletes** for data integrity
+- **Indexes** for performance optimization
+- **JSON fields** for flexible data storage
+
+### Frontend Architecture
+
+- **App Router** for modern Next.js patterns
+- **Custom hooks** for reusable logic
+- **Component composition** for maintainability
+- **TypeScript** for type safety
+
+### Backend Architecture
+
+- **MVC pattern** with clear separation
+- **Middleware** for cross-cutting concerns
+- **Validation** with Zod schemas
+- **Error handling** with custom error classes
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 👨‍💻 Author
+
+**Jay Shende** - [unseenjs.xyz](https://unseenjs.xyz)
+
+Built with ❤️ for the Verto Associate Software Engineer position.
+
+---
+
+## 🎯 Project Goals Achieved
+
+✅ **Full-stack functionality** - Complete end-to-end quiz application
+✅ **Database integration** - PostgreSQL with Prisma ORM
+✅ **User authentication** - OAuth with GitHub and Google
+✅ **Quiz management** - Create, take, and score quizzes
+✅ **Real-time features** - Timer, progress tracking, leaderboards
+✅ **Production deployment** - AWS EC2 with CI/CD pipeline
+✅ **Comprehensive testing** - Backend test suite with Jest
+✅ **Modern UI/UX** - Responsive design with Tailwind CSS
+✅ **Type safety** - Full TypeScript implementation
+
+This project demonstrates proficiency in modern web development, full-stack architecture, cloud deployment, and production-ready application development.
