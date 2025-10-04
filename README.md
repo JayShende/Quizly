@@ -50,7 +50,7 @@ The application is deployed on AWS EC2 (t2.medium instance) with:
 - **TypeScript** - Type-safe development
 - **Tailwind CSS** - Utility-first CSS framework
 - **NextAuth.js** - Authentication library (powered by BoltGate)
-- **TanStack Query** - Data fetching  (React Query)
+- **TanStack Query** - Data fetching (React Query)
 - **shadcn/ui** - Accessible component primitives built on Radix UI
 - **Lucide React** - Beautiful icons
 - **Sonner** - Toast notifications
@@ -395,6 +395,19 @@ Get user's detailed response for a quiz
 - **JWT Token Management** - Secure token handling with automatic refresh
 - **Environment Isolation** - Sensitive data protected through environment variables
 - **BoltGate Security** - Custom authentication wrapper providing additional security layers
+
+### API Access Requirements
+
+**Important:** The backend API cannot be accessed directly. All requests must go through the Next.js proxy:
+
+- ❌ **Direct access won't work:** `http://localhost:3001/api/v1/question/add`
+- ✅ **Correct proxy path:** `http://localhost:3000/api/proxy/v1/question/add`
+
+**Authentication Requirements:**
+
+- All API requests require NextAuth-generated cookies for authentication
+- Direct API testing (Postman, etc.) requires proper session cookies
+- **Alternative:** Use the live application at [http://quizly.unseenjs.xyz/](http://quizly.unseenjs.xyz/) 
 
 ## 🚀 Deployment
 
