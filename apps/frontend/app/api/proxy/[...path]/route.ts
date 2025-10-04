@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import axios from "axios";
 import { auth } from "@/auth"; // thiis will come form nextAuth installation use Boltgate for that
 
-// ✅ List of public routes (prefix-based)
+//  List of public routes (prefix-based)
 const PUBLIC_ROUTES: string[] = [
   "/api/proxy/v1/form/getForm", // example
 ];
@@ -34,7 +34,7 @@ async function proxyRequest(req: NextRequest, path: string[]) {
   let userId: string | null = null;
 
   console.log("publicAllowed", publicAllowed);
-  // 🔐 Session check only for non-public routes
+  //  Session check only for non-public routes
   if (!publicAllowed) {
     const session = await auth();
     if (!session?.user?.id) {
@@ -50,7 +50,7 @@ async function proxyRequest(req: NextRequest, path: string[]) {
     "Content-Type": req.headers.get("content-type") || "application/json",
   };
 
-  // 👉 Add Authorization only for authenticated requests
+  //  Add Authorization only for authenticated requests
   if (userId) {
     headers.Authorization = `Bearer ${signInternalJwt(userId)}`;
   }

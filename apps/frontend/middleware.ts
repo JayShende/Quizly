@@ -46,16 +46,14 @@ export default auth((req) => {
     return undefined;
   }
 
-  // ✅ Allow public routes (exact + regex)
+  //  Allow public routes (exact + regex)
   if (isPublicRoute) {
     return undefined;
   }
 
-  // ✅ Protect everything else
+  //  Protect everything else
   if (!isLoggedin) {
-    if (nextUrl.pathname === "/dashboard") {
-      return Response.redirect(new URL("/auth/login", nextUrl));
-    }
+    return Response.redirect(new URL("/auth/login", nextUrl));
   }
 
   return undefined;

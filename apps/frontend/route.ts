@@ -5,8 +5,8 @@
  */
 export const publicRoutes: (string | RegExp)[] = [
   "/", // homepage
-  /^\/form\/[^/]+\/view$/, // matches /form/{anything}/view
-  /^\/form\/[^/]+\/edit$/, // matches /form/{anything}/view
+  // /^\/form\/[^/]+\/view$/, // matches /form/{anything}/view
+  // /^\/form\/[^/]+\/edit$/, // matches /form/{anything}/view
 ];
 
 /**

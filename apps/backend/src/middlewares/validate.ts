@@ -18,7 +18,7 @@ export const validate =
         return res.status(400).json({
           success: false,
           message: "Validation Error",
-          errors: err.issues.map((issue) => issue.message), // ✅ only messages
+          errors: err.issues.map((issue) => issue.message), //  only messages
         });
       }
 
