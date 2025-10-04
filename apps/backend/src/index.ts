@@ -7,13 +7,7 @@ import authMiddleware from "./middlewares/auth.middleware";
 const app = express();
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: "http://localhost:3002",
-    credentials: true,
-    optionsSuccessStatus: 200,
-  })
-);
+app.use(cors());
 // app.use(authMiddleware);
 app.use("/v1", routes);
 // .env varibales
