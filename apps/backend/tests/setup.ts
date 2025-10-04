@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Jest setup file
 import { jest } from "@jest/globals";
 

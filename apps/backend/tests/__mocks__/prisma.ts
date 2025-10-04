@@ -1,4 +1,6 @@
 // Mock Prisma client for testing
+import { jest } from "@jest/globals";
+
 export const client = {
   quiz: {
     findUnique: jest.fn(),
