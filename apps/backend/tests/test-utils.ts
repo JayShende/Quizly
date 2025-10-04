@@ -1,4 +1,5 @@
 // Test utilities and mock data helpers
+import { jest } from "@jest/globals";
 import { client } from "@repo/prisma/client";
 
 // Mock quiz data with correct options for scoring
@@ -69,7 +70,26 @@ export const mockQuiz = {
   ],
 };
 
-// Mock user response data
+// Mock user submission data (what frontend sends)
+export const mockUserSubmission = {
+  quizId: "quiz-1",
+  answers: [
+    {
+      questionId: "q1",
+      optionId: "opt2", // Correct answer
+    },
+    {
+      questionId: "q2",
+      optionId: "opt5", // Correct answer
+    },
+    {
+      questionId: "q3",
+      optionId: "opt7", // Wrong answer
+    },
+  ],
+};
+
+// Mock database response data (what Prisma returns from database)  This is what the DATABASE stores after processing the user response on /response/add
 export const mockUserResponse = {
   id: "response-1",
   quizId: "quiz-1",
@@ -116,7 +136,13 @@ export const createMockQuiz = (overrides = {}) => ({
   ...overrides,
 });
 
-// Helper function to create mock user response
+// Helper function to create mock user submission
+export const createMockUserSubmission = (overrides = {}) => ({
+  ...mockUserSubmission,
+  ...overrides,
+});
+
+// Helper function to create mock user response (database structure)
 export const createMockUserResponse = (overrides = {}) => ({
   ...mockUserResponse,
   ...overrides,

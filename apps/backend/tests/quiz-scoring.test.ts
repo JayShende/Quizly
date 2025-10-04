@@ -1,4 +1,5 @@
 // Unit tests for quiz scoring logic
+// @ts-nocheck
 import { client } from "@repo/prisma/client";
 import quizService from "../src/services/quiz.service";
 import ApiError from "../src/utils/api-error";
@@ -58,7 +59,9 @@ describe("Quiz Scoring Logic", () => {
         ],
       });
 
+      // check if the quiz exists
       (client.quiz.findUnique as jest.Mock).mockResolvedValue(mockQuiz);
+      // check if the user has already responded to the quiz
       (client.response.findFirst as jest.Mock).mockResolvedValue(mockResponse);
 
       // Act
@@ -285,7 +288,7 @@ describe("Quiz Scoring Logic", () => {
   describe("calculateScore - Error Handling", () => {
     test("should throw error when quiz not found", async () => {
       // Arrange
-      const quizId = "non-existent-quiz";
+      const quizId = "non-existent-quizId";
       const userId = "user-1";
 
       (client.quiz.findUnique as jest.Mock).mockResolvedValue(null);
