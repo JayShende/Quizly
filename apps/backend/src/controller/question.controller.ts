@@ -38,6 +38,7 @@ const addBulkQuestions = async (req: Request, res: Response) => {
       result
     );
   } catch (error) {
+    console.log(error);
     if (error instanceof ApiError) {
       return response(res, error.statusCode, error.message, null);
     }
