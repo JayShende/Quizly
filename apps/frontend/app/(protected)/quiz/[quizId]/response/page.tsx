@@ -129,7 +129,7 @@ const QuizResponse = () => {
         {/* Header */}
         <div className="flex items-center gap-4 mb-6">
           <Button
-            onClick={() => router.back()}
+            onClick={() => router.push(`/dashboard`)}
             variant="outline"
             size="sm"
             className="flex items-center gap-2"
@@ -247,8 +247,10 @@ const QuizResponse = () => {
                   >
                     {index + 1}
                   </div>
-                  <div className="flex-1">
-                    <CardTitle className={cn("text-lg", interFont.className)}>
+                  <div className="flex-1 min-w-0">
+                    <CardTitle
+                      className={cn("text-lg break-words", interFont.className)}
+                    >
                       {question.questionText}
                     </CardTitle>
                   </div>
@@ -281,7 +283,7 @@ const QuizResponse = () => {
                       return (
                         <div
                           key={option.id}
-                          className={`p-3 rounded-lg border-2 transition-all ${
+                          className={`p-3 rounded-lg border-2 transition-all overflow-hidden ${
                             isUserAnswer && isCorrectAnswer
                               ? "border-green-500 bg-green-50 text-green-800"
                               : isUserAnswer && !isCorrectAnswer
@@ -291,9 +293,9 @@ const QuizResponse = () => {
                                   : "border-gray-200 bg-gray-50 text-gray-700"
                           }`}
                         >
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-start gap-3">
                             <div
-                              className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${
+                              className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 ${
                                 isUserAnswer && isCorrectAnswer
                                   ? "bg-green-600 text-white"
                                   : isUserAnswer && !isCorrectAnswer
@@ -307,11 +309,16 @@ const QuizResponse = () => {
                                 65 + question.allOptions.indexOf(option)
                               )}
                             </div>
-                            <span className={cn("flex-1", interFont.className)}>
+                            <span
+                              className={cn(
+                                "flex-1 break-words min-w-0",
+                                interFont.className
+                              )}
+                            >
                               {option.text}
                             </span>
-                            <div className="flex items-center gap-2">
-                              {isUserAnswer && (
+                            <div className="flex items-center gap-2 flex-shrink-0 flex-wrap">
+                              {isUserAnswer && !isCorrectAnswer && (
                                 <span
                                   className={cn(
                                     "text-xs font-medium px-2 py-1 rounded bg-blue-100 text-blue-700",
@@ -328,7 +335,7 @@ const QuizResponse = () => {
                                     interFont.className
                                   )}
                                 >
-                                  Correct
+                                  {isUserAnswer ? "Correct" : "Correct Answer"}
                                 </span>
                               )}
                             </div>

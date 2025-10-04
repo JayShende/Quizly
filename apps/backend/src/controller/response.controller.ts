@@ -31,7 +31,7 @@ const getUserResponse = async (req: Request, res: Response) => {
   try {
     const { quizId } = req.params;
     const userId = req.user?.userId!;
-    if(!quizId ) {
+    if (!quizId) {
       throw new ApiError(HttpStatus.BAD_REQUEST, "Quiz ID is required");
     }
     const result = await responseService.getUserResponse(quizId, userId);

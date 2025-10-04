@@ -37,7 +37,7 @@ const QuizSubmited: React.FC<QuizSubmitedProps> = ({
   return (
    <Container>
      <div className="min-h-screen flex items-center justify-center p-4">
-      <Card className="w-full max-w-2xl h-[90vh] flex flex-col py-0">
+      <Card className="w-full max-w-2xl min-h-[90vh] flex flex-col py-0">
         <div className="w-full h-3 rounded-t-xl bg-gradient-to-r from-green-500 to-emerald-600" />
         <CardHeader className="text-center pb-4 flex-shrink-0">
           <div className="flex justify-center mb-3">

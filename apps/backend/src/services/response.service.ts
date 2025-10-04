@@ -59,7 +59,7 @@ const addResponse = async (data: AddResponseProps, userId: string) => {
   console.log(score);
   // update the response with the score
   await client.response.update({
-    where: {  
+    where: {
       id: quizResponse.id,
     },
     data: { score: score },
