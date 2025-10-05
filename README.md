@@ -12,6 +12,12 @@ A comprehensive full-stack quiz application built with modern web technologies, 
 
 **Production URL:** [http://quizly.unseenjs.xyz/](http://quizly.unseenjs.xyz/)
 
+## 📹 Project Walkthrough Video
+
+**Video Recording:** [Project Explanation &amp; Walkthrough](https://drive.google.com/file/d/1mZKRCtVVTGmx2Z6qNDH1F7xdlGbJ0ZJ1/view?usp=drive_link) (**https://drive.google.com/file/d/1mZKRCtVVTGmx2Z6qNDH1F7xdlGbJ0ZJ1/view?**usp**=**drive_link)
+
+This video covers the thought process, technical approach, architecture decisions, and key features implemented for the Verto ASE challenge.
+
 The application is deployed on AWS EC2 (t2.medium instance) with:
 
 - **Nginx** reverse proxy
@@ -407,7 +413,7 @@ Get user's detailed response for a quiz
 
 - All API requests require NextAuth-generated cookies for authentication
 - Direct API testing (Postman, etc.) requires proper session cookies
-- **Alternative:** Use the live application at [http://quizly.unseenjs.xyz/](http://quizly.unseenjs.xyz/) 
+- **Alternative:** Use the live application at [http://quizly.unseenjs.xyz/](http://quizly.unseenjs.xyz/)
 
 ## 🚀 Deployment
 
