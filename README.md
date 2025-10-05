@@ -14,7 +14,7 @@ A comprehensive full-stack quiz application built with modern web technologies, 
 
 ## 📹 Project Walkthrough Video
 
-**Video Recording:** [Project Explanation &amp; Walkthrough](https://drive.google.com/file/d/1mZKRCtVVTGmx2Z6qNDH1F7xdlGbJ0ZJ1/view?usp=drive_link) (**https://drive.google.com/file/d/1mZKRCtVVTGmx2Z6qNDH1F7xdlGbJ0ZJ1/view?**usp**=**drive_link)
+**Video Recording:** [Project Explanation &amp; Walkthrough](https://drive.google.com/file/d/1mZKRCtVVTGmx2Z6qNDH1F7xdlGbJ0ZJ1/view?usp=drive_link)
 
 This video covers the thought process, technical approach, architecture decisions, and key features implemented for the Verto ASE challenge.
 
